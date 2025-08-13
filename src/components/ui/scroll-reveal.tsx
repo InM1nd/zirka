@@ -1,111 +1,61 @@
 "use client"
 
-import { cn } from "@/lib/utils"
-import { motion, useInView } from "framer-motion"
+import { useInView } from "framer-motion"
 import { useRef } from "react"
+import { motion } from "framer-motion"
+import { cn } from "@/lib/utils"
 
 interface ScrollRevealProps {
   children: React.ReactNode
   className?: string
-  delay?: number
   direction?: "up" | "down" | "left" | "right" | "scale" | "fade"
-  duration?: number
   distance?: number
+  duration?: number
+  delay?: number
 }
 
-export function ScrollReveal({
-  children,
-  className,
-  delay = 0,
-  direction = "up",
-  duration = 0.6,
-  distance = 30,
+export function ScrollReveal({ 
+  children, 
+  className, 
+  direction = "up", 
+  distance = 50, 
+  duration = 0.6, 
+  delay = 0 
 }: ScrollRevealProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { 
-    once: true, 
-    margin: "-50px",
-    amount: 0.3
-  })
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const getVariants = () => {
     const baseVariants = {
       hidden: { opacity: 0 },
-      visible: { 
-        opacity: 1,
-        transition: {
-          duration,
-          delay,
-          ease: [0.25, 0.46, 0.45, 0.94],
-        }
-      }
+      visible: { opacity: 1 }
     }
 
     switch (direction) {
       case "up":
         return {
           hidden: { opacity: 0, y: distance },
-          visible: { 
-            opacity: 1, 
-            y: 0,
-            transition: {
-              duration,
-              delay,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }
-          }
+          visible: { opacity: 1, y: 0 }
         }
       case "down":
         return {
           hidden: { opacity: 0, y: -distance },
-          visible: { 
-            opacity: 1, 
-            y: 0,
-            transition: {
-              duration,
-              delay,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }
-          }
+          visible: { opacity: 1, y: 0 }
         }
       case "left":
         return {
           hidden: { opacity: 0, x: distance },
-          visible: { 
-            opacity: 1, 
-            x: 0,
-            transition: {
-              duration,
-              delay,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }
-          }
+          visible: { opacity: 1, x: 0 }
         }
       case "right":
         return {
           hidden: { opacity: 0, x: -distance },
-          visible: { 
-            opacity: 1, 
-            x: 0,
-            transition: {
-              duration,
-              delay,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }
-          }
+          visible: { opacity: 1, x: 0 }
         }
       case "scale":
         return {
           hidden: { opacity: 0, scale: 0.9 },
-          visible: { 
-            opacity: 1, 
-            scale: 1,
-            transition: {
-              duration,
-              delay,
-              ease: [0.25, 0.46, 0.45, 0.94],
-            }
-          }
+          visible: { opacity: 1, scale: 1 }
         }
       case "fade":
         return baseVariants
@@ -120,6 +70,7 @@ export function ScrollReveal({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={getVariants()}
+      transition={{ duration, delay }}
       className={cn("animate-on-scroll", className)}
       style={{ 
         willChange: "transform, opacity",
