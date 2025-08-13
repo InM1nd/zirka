@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --radius: 0.75rem;
+    --background: oklch(0.98 0.005 240);
+    --foreground: oklch(0.12 0.01 240);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.12 0.01 240);
+    --primary: oklch(0.55 0.15 250);
+    --primary-foreground: oklch(0.98 0.005 240);
+    --secondary: oklch(0.96 0.01 240);
+    --secondary-foreground: oklch(0.12 0.01 240);
+    --muted: oklch(0.96 0.01 240);
+    --muted-foreground: oklch(0.45 0.01 240);
+    --border: oklch(0.9 0.01 240);
+    --input: oklch(0.9 0.01 240);
+    --ring: oklch(0.55 0.15 250);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background: oklch(var(--background));
+    color: oklch(var(--foreground));
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  
+  /* Better focus styles */
+  :focus-visible {
+    outline: 2px solid oklch(var(--ring));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Selection styles */
+  ::selection {
+    background: oklch(var(--primary) / 0.2);
+    color: oklch(var(--foreground));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: oklch(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--primary) / 0.8);
+  }
+
+  /* Smooth transitions */
+  * {
+    transition-property: color, background-color, border-color, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+
+  /* Enhanced card styles */
+  .card-modern {
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+    border-radius: 12px;
+    box-shadow: 0 1px 3px oklch(var(--foreground) / 0.1);
+    transition: all 0.2s ease;
+  }
+
+  .card-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px oklch(var(--foreground) / 0.15);
+  }
+
+  /* Enhanced button styles */
+  .btn-modern {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  /* Enhanced input styles */
+  .input-modern {
+    background: oklch(var(--input));
+    border: 1px solid oklch(var(--border));
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .input-modern:focus {
+    border-color: oklch(var(--primary));
+    box-shadow: 0 0 0 3px oklch(var(--primary) / 0.1);
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

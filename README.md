@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ZIRKA - Investment Intelligence Dashboard
+
+AI-powered investment intelligence platform with comprehensive analysis tools for private markets investors.
+
+## Features
+
+### 1. Company Profiling
+- Comprehensive company analysis and insights
+- AI-powered company research
+- Integration with multiple data sources (PitchBook, LSEG, SEC)
+- Export and sharing capabilities
+
+### 2. Opportunity Screening
+- Automated investment opportunity screening
+- Email-based opportunity input
+- Categorization by industry verticals
+- Fit-based classification (Best, Medium, Worst)
+- Interactive dashboard with detailed summaries
+
+### 3. Market Scanning
+- Intelligent market analysis and monitoring
+- Predictive opportunity detection
+- Real-time news feed with categorization
+- AI-powered market insights and recommendations
+- Market metrics and analytics
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **UI Components**: Custom components with modern design
+- **State Management**: React hooks and local state
 
 ## Getting Started
 
-First, run the development server:
-
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── page.tsx            # Main dashboard page
+│   └── globals.css         # Global styles
+├── components/
+│   ├── dashboard.tsx       # Main dashboard component
+│   ├── sidebar.tsx         # Navigation sidebar
+│   └── sections/
+│       ├── company-profiling.tsx      # Company analysis section
+│       ├── opportunity-screening.tsx  # Opportunity screening section
+│       └── market-scanning.tsx        # Market intelligence section
+└── lib/
+    └── utils.ts            # Utility functions
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Design Philosophy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The dashboard follows modern design principles inspired by platforms like [Clarum.ai](https://clarum.ai) and [Rogo.ai](https://rogo.ai):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Clean, minimalist interface
+- Intuitive navigation with sidebar
+- Responsive grid layouts
+- Consistent color coding and visual hierarchy
+- Interactive elements with smooth transitions
 
-## Deploy on Vercel
+## Future Enhancements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Real-time data integration
+- Advanced AI models for analysis
+- User authentication and profiles
+- Customizable dashboards
+- API endpoints for external integrations
+- Advanced filtering and search capabilities
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+This is a prototype/demo project. For production use, additional features like authentication, data persistence, and real API integrations would be needed.
+
+## License
+
+Private project - All rights reserved.
