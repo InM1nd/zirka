@@ -4,11 +4,13 @@ import { useState, useEffect } from "react"
 import { CompanyProfiling } from "./sections/company-profiling"
 import { OpportunityScreening } from "./sections/opportunity-screening"
 import { MarketScanning } from "./sections/market-scanning"
+import { MarketScanningV2 } from "./sections/market-scanning-v2"
 import { Building2, Target, TrendingUp } from "lucide-react"
 
 export function Dashboard() {
   const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState<"profiling" | "screening" | "scanning">("profiling")
+  const [marketScanningVersion, setMarketScanningVersion] = useState<1 | 2>(1)
 
   useEffect(() => {
     setMounted(true)
@@ -16,8 +18,8 @@ export function Dashboard() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center">
-        <div className="text-2xl font-bold text-gray-600">Loading...</div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-xl text-foreground">Loading...</div>
       </div>
     )
   }
@@ -28,36 +30,33 @@ export function Dashboard() {
       title: "Company Profiling",
       description: "Comprehensive company analysis and insights",
       icon: Building2,
-      color: "blue"
     },
     {
       id: "screening" as const,
       title: "Opportunity Screening", 
       description: "Screen and filter investment opportunities",
       icon: Target,
-      color: "green"
     },
     {
       id: "scanning" as const,
       title: "Market Scanning",
       description: "Monitor market trends and dynamics",
       icon: TrendingUp,
-      color: "purple"
     }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-4">
+      <div className="border-b border-border px-6 py-4">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-900">Zirka Dashboard</h1>
-          <p className="text-gray-600 mt-1">AI-powered investment analysis and opportunity screening platform</p>
+          <h1 className="text-2xl font-medium text-foreground">Zirka Dashboard</h1>
+          <p className="text-muted-foreground mt-1">AI-powered investment analysis platform</p>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200 px-6">
+      <div className="border-b border-border px-6">
         <div className="max-w-7xl mx-auto">
           <nav className="flex space-x-8">
             {sections.map((section) => {
@@ -67,13 +66,13 @@ export function Dashboard() {
                 <button
                   key={section.id}
                   onClick={() => setActiveSection(section.id)}
-                  className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 transition-colors duration-200 ${
+                  className={`py-4 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 transition-colors ${
                     isActive
-                      ? `border-${section.color}-500 text-${section.color}-600`
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      ? "border-foreground text-foreground"
+                      : "border-transparent text-muted-foreground hover:text-foreground"
                   }`}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                   <span>{section.title}</span>
                 </button>
               )
@@ -86,7 +85,42 @@ export function Dashboard() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {activeSection === "profiling" && <CompanyProfiling />}
         {activeSection === "screening" && <OpportunityScreening />}
-        {activeSection === "scanning" && <MarketScanning />}
+        {activeSection === "scanning" && (
+          <div className="space-y-6">
+            {/* Version Selector */}
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-foreground">Market Scanning</h2>
+                <p className="text-muted-foreground">Choose your preferred interface</p>
+              </div>
+              <div className="flex items-center space-x-2 bg-muted rounded-lg p-1">
+                <button
+                  onClick={() => setMarketScanningVersion(1)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    marketScanningVersion === 1
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-white"
+                  }`}
+                >
+                  Classic View
+                </button>
+                <button
+                  onClick={() => setMarketScanningVersion(2)}
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                    marketScanningVersion === 2
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-white"
+                  }`}
+                >
+                  Chat View
+                </button>
+              </div>
+            </div>
+            
+            {/* Render Selected Version */}
+            {marketScanningVersion === 1 ? <MarketScanning /> : <MarketScanningV2 />}
+          </div>
+        )}
       </div>
     </div>
   )

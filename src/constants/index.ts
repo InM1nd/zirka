@@ -18,16 +18,16 @@ export const NEWS_TYPES = {
 } as const
 
 export const COLORS = {
-  BEST_FIT: "bg-gradient-to-r from-green-100 to-emerald-100 border-green-200 text-green-800",
-  MEDIUM_FIT: "bg-gradient-to-r from-yellow-100 to-amber-100 border-yellow-200 text-yellow-800",
-  WORST_FIT: "bg-gradient-to-r from-red-100 to-rose-100 border-red-200 text-red-800",
-  FUNDING: "bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 border-green-200",
-  INTERVIEW: "bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-800 border-blue-200",
-  BANKRUPTCY: "bg-gradient-to-r from-red-100 to-rose-100 text-red-800 border-red-200",
-  OUTLOOK: "bg-gradient-to-r from-purple-100 to-violet-100 text-purple-800 border-purple-200",
-  HIGH_IMPACT: "bg-gradient-to-r from-red-100 to-orange-100 text-red-800 border-red-200",
-  MEDIUM_IMPACT: "bg-gradient-to-r from-yellow-100 to-amber-100 text-yellow-800 border-yellow-200",
-  LOW_IMPACT: "bg-gradient-to-r from-green-100 to-emerald-100 text-green-800 border-green-200",
+  BEST_FIT: "bg-transparent border-green-600 text-green-600",
+  MEDIUM_FIT: "bg-transparent border-yellow-600 text-yellow-600", 
+  WORST_FIT: "bg-transparent border-red-600 text-red-600",
+  FUNDING: "bg-transparent text-green-600 border-green-600",
+  INTERVIEW: "bg-transparent text-blue-600 border-blue-600",
+  BANKRUPTCY: "bg-transparent text-red-600 border-red-600",
+  OUTLOOK: "bg-transparent text-purple-600 border-purple-600",
+  HIGH_IMPACT: "bg-transparent text-red-600 border-red-600",
+  MEDIUM_IMPACT: "bg-transparent text-yellow-600 border-yellow-600",
+  LOW_IMPACT: "bg-transparent text-green-600 border-green-600",
 } as const
 
 export const ICONS = {

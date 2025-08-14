@@ -45,68 +45,68 @@ export function DashboardStats({ stats }: DashboardStatsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {/* Total Companies */}
-      <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+      <div className="border border-border rounded-lg p-4 bg-card">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-blue-600">Total Companies</p>
-            <p className="text-3xl font-bold text-blue-900">{stats.totalCompanies.toLocaleString()}</p>
+            <p className="text-sm font-medium text-muted-foreground">Total Companies</p>
+            <p className="text-2xl font-medium text-foreground">{stats.totalCompanies.toLocaleString()}</p>
           </div>
-          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-            <Building2 className="w-6 h-6 text-blue-600" />
+          <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <Building2 className="w-5 h-5 text-foreground" />
           </div>
         </div>
-        <div className="mt-4 flex items-center text-sm text-blue-700">
+        <div className="mt-3 flex items-center text-sm text-muted-foreground">
           <TrendingUp className="w-4 h-4 mr-1" />
           <span>+12% from last month</span>
         </div>
       </div>
 
       {/* Active Opportunities */}
-      <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+      <div className="border border-border rounded-lg p-4 bg-card">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-green-600">Active Opportunities</p>
-            <p className="text-3xl font-bold text-green-900">{stats.activeOpportunities}</p>
+            <p className="text-sm font-medium text-muted-foreground">Active Opportunities</p>
+            <p className="text-2xl font-medium text-foreground">{stats.activeOpportunities}</p>
           </div>
-          <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-            <Target className="w-6 h-6 text-green-600" />
+          <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <Target className="w-5 h-5 text-foreground" />
           </div>
         </div>
-        <div className="mt-4 flex items-center text-sm text-green-700">
+        <div className="mt-3 flex items-center text-sm text-green-600">
           <TrendingUp className="w-4 h-4 mr-1" />
           <span>+8 new this week</span>
         </div>
       </div>
 
       {/* Funding Rounds */}
-      <div className="bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+      <div className="border border-border rounded-lg p-4 bg-card">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-purple-600">Funding Rounds</p>
-            <p className="text-3xl font-bold text-purple-900">{stats.fundingRounds}</p>
+            <p className="text-sm font-medium text-muted-foreground">Funding Rounds</p>
+            <p className="text-2xl font-medium text-foreground">{stats.fundingRounds}</p>
           </div>
-          <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-            <DollarSign className="w-6 h-6 text-purple-600" />
+          <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <DollarSign className="w-5 h-5 text-foreground" />
           </div>
         </div>
-        <div className="mt-4 flex items-center text-sm text-purple-700">
+        <div className="mt-3 flex items-center text-sm text-muted-foreground">
           <TrendingUp className="w-4 h-4 mr-1" />
           <span>+23% from last quarter</span>
         </div>
       </div>
 
       {/* Prediction Accuracy */}
-      <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:scale-105">
+      <div className="border border-border rounded-lg p-4 bg-card">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-orange-600">Prediction Accuracy</p>
-            <p className="text-3xl font-bold text-orange-900">{stats.predictionAccuracy}%</p>
+            <p className="text-sm font-medium text-muted-foreground">Prediction Accuracy</p>
+            <p className="text-2xl font-medium text-foreground">{stats.predictionAccuracy}%</p>
           </div>
-          <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-            <Target className="w-6 h-6 text-orange-600" />
+          <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <Target className="w-5 h-5 text-foreground" />
           </div>
         </div>
-        <div className="mt-4 flex items-center text-sm text-orange-700">
+        <div className="mt-3 flex items-center text-sm text-muted-foreground">
           <TrendingUp className="w-4 h-4 mr-1" />
           <span>+2.1% improvement</span>
         </div>
@@ -124,11 +124,15 @@ export function MarketSentiment({ stats }: DashboardStatsProps) {
     throw new Error("Function not implemented.")
   }
 
+  function getSentimentColor(marketSentiment: string): import("react").ReactNode {
+    throw new Error("Function not implemented.")
+  }
+
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-6">
+    <div className="border border-border rounded-lg p-4 bg-card">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">Market Sentiment</h3>
-        <div className={`px-3 py-1 rounded-full text-sm font-medium border ${getSentimentIcon(stats.marketSentiment)}`}>
+        <h3 className="text-base font-medium text-foreground">Market Sentiment</h3>
+        <div className={`px-3 py-1 rounded-full text-sm font-medium border ${getSentimentColor(stats.marketSentiment)}`}>
           <div className="flex items-center space-x-2">
             {getSentimentIcon(stats.marketSentiment)}
             <span>{getSentimentLabel(stats.marketSentiment)}</span>
@@ -138,18 +142,18 @@ export function MarketSentiment({ stats }: DashboardStatsProps) {
       
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">Top Sectors</span>
-          <span className="text-sm font-medium text-gray-900">{stats.topSectors.slice(0, 3).join(", ")}</span>
+          <span className="text-sm text-muted-foreground">Top Sectors</span>
+          <span className="text-sm font-medium text-foreground">{stats.topSectors.slice(0, 3).join(", ")}</span>
         </div>
         
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="w-full bg-muted rounded-full h-2">
           <div 
-            className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded-full transition-all duration-1000 ease-out"
+            className="bg-foreground h-2 rounded-full transition-all duration-1000 ease-out"
             style={{ width: `${stats.predictionAccuracy}%` }}
           ></div>
         </div>
         
-        <div className="text-xs text-gray-500 text-center">
+        <div className="text-xs text-muted-foreground text-center">
           AI-powered sentiment analysis based on {stats.totalCompanies} companies
         </div>
       </div>
