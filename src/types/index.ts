@@ -25,6 +25,13 @@ export interface NewsItem {
   source?: string
 }
 
+export interface SourceInfo {
+  source: string
+  excerpt: string
+  url?: string
+  date?: string
+}
+
 export interface CompanyAnalysis {
   companyName: string
   description: string
@@ -43,6 +50,11 @@ export interface CompanyAnalysis {
     revenueGrowth: number
     profitMargin: number
     debtRatio: number
+    sourceInfo?: {
+      revenueGrowth?: SourceInfo
+      profitMargin?: SourceInfo
+      debtRatio?: SourceInfo
+    }
   }
   risks?: string[]
   opportunities?: string[]

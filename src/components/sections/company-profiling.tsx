@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Building2, Send, Plus, FileText, TrendingUp, Users, DollarSign, MapPin, Calendar, Target, AlertTriangle, Lightbulb, BarChart3, Download, Share2, Bookmark } from "lucide-react"
 import { analyzeCompany } from "@/lib/api"
 import { CompanyAnalysis } from "@/types"
+import { SourceTooltip } from "@/components/ui/source-tooltip"
 
 export function CompanyProfiling() {
   const [companyQuery, setCompanyQuery] = useState("")
@@ -241,17 +242,41 @@ export function CompanyProfiling() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="border border-border rounded-lg p-4 bg-card">
                         <h6 className="font-medium text-foreground mb-2">Revenue Growth</h6>
-                        <div className="text-xl font-medium text-green-600">{analysisResult.financials.revenueGrowth}%</div>
+                        <div className="text-xl font-medium text-green-600">
+                          {analysisResult.financials.sourceInfo?.revenueGrowth ? (
+                            <SourceTooltip sourceInfo={analysisResult.financials.sourceInfo.revenueGrowth}>
+                              {analysisResult.financials.revenueGrowth}%
+                            </SourceTooltip>
+                          ) : (
+                            `${analysisResult.financials.revenueGrowth}%`
+                          )}
+                        </div>
                         <div className="text-sm text-muted-foreground">Year over Year</div>
                       </div>
                       <div className="border border-border rounded-lg p-4 bg-card">
                         <h6 className="font-medium text-foreground mb-2">Profit Margin</h6>
-                        <div className="text-xl font-medium text-foreground">{analysisResult.financials.profitMargin}%</div>
+                        <div className="text-xl font-medium text-foreground">
+                          {analysisResult.financials.sourceInfo?.profitMargin ? (
+                            <SourceTooltip sourceInfo={analysisResult.financials.sourceInfo.profitMargin}>
+                              {analysisResult.financials.profitMargin}%
+                            </SourceTooltip>
+                          ) : (
+                            `${analysisResult.financials.profitMargin}%`
+                          )}
+                        </div>
                         <div className="text-sm text-muted-foreground">Net Profit</div>
                       </div>
                       <div className="border border-border rounded-lg p-4 bg-card">
                         <h6 className="font-medium text-foreground mb-2">Debt Ratio</h6>
-                        <div className="text-xl font-medium text-foreground">{analysisResult.financials.debtRatio}</div>
+                        <div className="text-xl font-medium text-foreground">
+                          {analysisResult.financials.sourceInfo?.debtRatio ? (
+                            <SourceTooltip sourceInfo={analysisResult.financials.sourceInfo.debtRatio}>
+                              {analysisResult.financials.debtRatio}
+                            </SourceTooltip>
+                          ) : (
+                            analysisResult.financials.debtRatio
+                          )}
+                        </div>
                         <div className="text-sm text-muted-foreground">Total Debt/Assets</div>
                       </div>
                     </div>
@@ -333,25 +358,6 @@ export function CompanyProfiling() {
               <button className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 hover:text-white text-sm transition-colors">
                 Save Analysis
               </button>
-            </div>
-          </div>
-
-          {/* Статистика */}
-          <div className="border border-border rounded-lg p-4 bg-card">
-            <h3 className="text-base font-medium text-foreground mb-4">Analysis Stats</h3>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-blue-600">Data Points</span>
-                <span className="text-lg font-bold text-blue-600">1,247</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-blue-600">Accuracy</span>
-                <span className="text-lg font-bold text-blue-600">94.2%</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-blue-600">Last Updated</span>
-                <span className="text-sm font-medium text-blue-600">2 hours ago</span>
-              </div>
             </div>
           </div>
         </div>

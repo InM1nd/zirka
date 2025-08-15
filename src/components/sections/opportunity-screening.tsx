@@ -226,18 +226,92 @@ export function OpportunityScreening() {
           <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
             <div className="flex items-center space-x-2 mb-4">
               <Mail className="w-5 h-5 text-blue-600" />
-              <h3 className="text-lg font-semibold text-foreground">Email Input</h3>
+              <h3 className="text-lg font-semibold text-foreground">Link Your Email</h3>
             </div>
             <div className="space-y-4">
               <div className="p-3 rounded-lg border border-border">
-                <div className="text-sm text-foreground mb-2 font-medium">Example emails:</div>
-                <div className="space-y-2 text-xs">
-                  <div className="p-2 rounded border text-blue-600">Investment Opportunity: Fintech project</div>
-                  <div className="p-2 rounded border text-blue-600">Investment Opportunity: Factory in Germany</div>
-                  <div className="p-2 rounded border text-blue-600">Investment Opportunity: Agritech project</div>
+                <div className="text-sm text-foreground mb-2 font-medium">Gmail Integration:</div>
+                <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+                  {/* Gmail Interface Mock */}
+                  <div className="bg-white">
+                    {/* Gmail Header */}
+                    <div className="flex items-center justify-between p-2 bg-white border-b border-gray-200">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-5 h-5 bg-red-500 rounded-sm flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">G</span>
+                        </div>
+                        <span className="text-sm font-medium text-gray-700">Gmail</span>
+                      </div>
+                      <div className="flex-1 max-w-xs mx-4">
+                        <div className="bg-gray-100 rounded-full px-3 py-1 text-xs text-gray-500">
+                          Search mail
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Gmail Sidebar and Email List */}
+                    <div className="flex">
+                      
+                      {/* Email List */}
+                      <div className="flex-1">
+                        {/* Email 1 - Fintech */}
+                        <div 
+                          className="flex items-center p-2 border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-colors group"
+                          onClick={() => setEmailInput("Investment Opportunity: AI Financial Platform - $5M Series A funding round for fintech startup with $2M ARR")}
+                        >
+                          <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-2">
+                            <span className="text-white text-xs font-bold">I</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between">
+                              <div className="text-xs font-medium text-gray-900 group-hover:text-blue-600">Investment Team</div>
+                              <div className="text-xs text-gray-400">2:30 PM</div>
+                            </div>
+                            <div className="text-xs text-gray-600 truncate group-hover:text-blue-800">Investment Opportunity: Fintech Startup</div>
+                          </div>
+                          <div className="w-2 h-2 bg-red-500 rounded-full ml-1"></div>
+                        </div>
+                        
+                        {/* Email 2 - Factory */}
+                        <div 
+                          className="flex items-center p-2 border-b border-gray-100 hover:bg-blue-50 cursor-pointer transition-colors group"
+                          onClick={() => setEmailInput("Investment Opportunity: Manufacturing Facility Germany - Industrial equipment factory with established operations and expansion plans")}
+                        >
+                          <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-2">
+                            <span className="text-white text-xs font-bold">V</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between">
+                              <div className="text-xs font-medium text-gray-900 group-hover:text-blue-600">Venture Capital</div>
+                              <div className="text-xs text-gray-400">1:15 PM</div>
+                            </div>
+                            <div className="text-xs text-gray-600 truncate group-hover:text-blue-800">Investment Opportunity: Factory in Germany</div>
+                          </div>
+                          <div className="w-2 h-2 bg-red-500 rounded-full ml-1"></div>
+                        </div>
+                        
+                        {/* Email 3 - Agritech */}
+                        <div 
+                          className="flex items-center p-2 hover:bg-blue-50 cursor-pointer transition-colors group"
+                          onClick={() => setEmailInput("Investment Opportunity: AgriTech Innovation - Smart farming technology with IoT sensors and AI-driven crop optimization")}
+                        >
+                          <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center mr-2">
+                            <span className="text-white text-xs font-bold">A</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between">
+                              <div className="text-xs font-medium text-gray-900 group-hover:text-blue-600">Agri Partners</div>
+                              <div className="text-xs text-gray-400">11:45 AM</div>
+                            </div>
+                            <div className="text-xs text-gray-600 truncate group-hover:text-blue-800">Investment Opportunity: Agritech Project</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-                <div className="flex space-x-2 w-full">
+                <div className="flex flex-col gap-2 w-full">
                  <input
                    type="text"
                    placeholder="Type here..."
@@ -247,9 +321,10 @@ export function OpportunityScreening() {
                  />
                  <button
                    onClick={handleEmailSubmit}
-                   className="flex-shrink-0 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center transition-all duration-200 shadow-md hover:shadow-lg"
+                   className="flex-shrink-0 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex justify-center items-center transition-all duration-200 shadow-md hover:shadow-lg"
                  >
-                   <Send className="w-4 h-4" />
+                   <span>Send</span>
+                   <Send className="w-4 h-4 ml-2" />
                  </button>
                </div>
             </div>
